@@ -32,7 +32,7 @@ router.post('/', function(req, res) {
     });
 
     if (!found) {
-    	render(null, "Invalid URL provided.");
+    	render(null, "There isn't a parser available for the URL.");
     }
 })
 
