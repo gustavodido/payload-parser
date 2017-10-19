@@ -1,0 +1,47 @@
+extends layout
+
+block content
+	.container-fluid
+		nav.navbar.navbar-white.navbar-fixed-top(role='navigation')
+			.container-fluid
+				.navbar-header
+					form(action="", method='post')
+						.pull-left.margin
+							span.panel-heading.navbar-heading URL: 
+							.btn-group.large
+								input.form-control(type='text', placeholder='ex: https://target-inventory-service-showcase.apps.cfdev.phx.gaptech.com/target-inventory/0f392dde-ea9b-47d6-972a-1632e479955b', name='url', value=url)
+						.pull-left.ml-10
+							button.btn.btn-info.auto.margin-top(type='submit', data-loading-text="<span class='glyphicon glyphicon-refresh spinning'/>")
+								span.glyphicon.glyphicon-screenshot
+
+	if parsed
+		.container-fluid.main
+			.row
+				.col-lg-12
+					.panel.panel-default
+						.panel-heading Summary
+						.panel-body
+							table.table.table-bordered.table-condensed
+								thead
+									tr
+										for col in report.summary.columns
+											th=col
+								tbody
+									tr
+										for value in report.summary.values
+											th=value
+			.row
+				.col-lg-12
+					.panel.panel-default
+						.panel-heading Results
+						.panel-body
+							table.table.table-bordered.table-condensed
+								thead
+									tr
+										for col in report.results.columns
+											th=col
+								tbody
+									for value in report.results.values
+										tr
+											for cell in value
+													td.text-right=cell
