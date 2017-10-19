@@ -13,7 +13,6 @@ router.post('/', function(req, res) {
     const parsers = {
         'target-inventory-service': new TIParser()
     }
-
     const render = (report, error) => {
 	    res.render('index', {
 	        url: req.body.url,
